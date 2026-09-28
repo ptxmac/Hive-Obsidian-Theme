@@ -12,6 +12,12 @@ Light cream backgrounds with amber accents.
 
 **Settings → Appearance → Themes → Manage** → search **Wasp** → **Install** → select **Wasp** as your theme.
 
+## Fonts
+
+Wasp uses **Source Code Pro** for the editing view and code, and Obsidian's default font everywhere else. If Source Code Pro isn't installed, your system's code font is used instead.
+
+To change them, go to **Settings → Appearance → Font**: pick a **Text font** (this also replaces the editing-view font), a **Monospace font**, or change the **Font size**.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).

@@ -2,7 +2,9 @@
 
 /* Shared (both color schemes) — per Obsidian "Build a theme" guidance */
 body {
-	--font-monospace: "Source Code Pro", monospace;
+	/* Theme font defaults — set the -theme variables so the fonts chosen in
+	   Settings → Appearance → Font (and the font size slider) always win */
+	--font-monospace-theme: "Source Code Pro";
 	/* Heading scale (reading + live preview) — matches Obsidian defaults */
 	--h1-size: 1.802em;
 	--h2-size: 1.556em;
@@ -71,7 +73,6 @@ body {
 	--interactive-accent: #f8c537;
 	--interactive-accent-rgb: 248, 197, 55;
 	--interactive-before: #9a9284;
-	--vim-cursor: #f8c537;
 
 	/* Graph view */
 	--graph-node: rgb(var(--interactive-accent-rgb));
@@ -152,7 +153,6 @@ body {
 	--interactive-accent: #D4922A;
 	--interactive-accent-rgb: 212, 146, 42;
 	--interactive-before: #6b5e4f;
-	--vim-cursor: #9B3A1A;
 
 	--graph-node: rgb(var(--interactive-accent-rgb));
 	--graph-line: rgb(var(--interactive-accent-rgb));
@@ -303,26 +303,17 @@ body {
 	color: var(--text-normal);
 }
 
-body .markdown-source-view .CodeMirror-guttermarker-subtle {
-	color: var(--text-normal);
-}
-
 .theme-light .vertical-tab-header-group-title {
-	color: var(--text-white);
+	color: var(--text-muted);
 }
 
 /*-----------------------------------------*/
 /* End of main theme, extra functionality can be added below */
 
+/* Editing view uses the code font by default. If a Text font is set in
+   Settings → Appearance → Font, that font is used here instead. */
 .markdown-source-view {
-	font-family: var(--font-monospace);
-}
-
-body .cm-fat-cursor .CodeMirror-cursor {
-	background-color: var(--vim-cursor);
-	opacity: 0.8;
-	width: 9px;
-	visibility: visible;
+	--font-text: var(--font-text-override), var(--font-monospace);
 }
 
 button.mod-cta {
