@@ -14,9 +14,13 @@ Light cream backgrounds with amber accents.
 
 ## Fonts
 
-Wasp uses **Source Code Pro** for the editing view and code, and Obsidian's default font everywhere else. If Source Code Pro isn't installed, your system's code font is used instead.
+Wasp uses **Source Code Pro** for the editing view and code, and Obsidian's default font everywhere else. Source Code Pro is built into the theme, so you don't need to install it.
 
 To change them, go to **Settings → Appearance → Font**: pick a **Text font** (this also replaces the editing-view font), a **Monospace font**, or change the **Font size**.
+
+If you use the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin, Wasp adds a switch there to use your normal text font in the editing view instead of Source Code Pro.
+
+Source Code Pro is © Adobe, used under the SIL Open Font License 1.1 (see [LICENSE-SourceCodePro.txt](LICENSE-SourceCodePro.txt)).
 
 ## License
 
