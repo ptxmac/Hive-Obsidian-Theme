@@ -13,3 +13,11 @@ node_modules
 
 # macOS
 .DS_Store
+
+# DevTools screenshots
+screenshot.png
+
+# Test vault: keep only the theme selection and symlinks from .obsidian
+test-vault/.obsidian/*
+!test-vault/.obsidian/appearance.json
+!test-vault/.obsidian/themes/

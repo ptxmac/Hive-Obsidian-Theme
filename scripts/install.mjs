@@ -37,7 +37,9 @@ if (!fs.existsSync(registry)) {
 }
 
 const { vaults = {} } = JSON.parse(fs.readFileSync(registry, "utf8"));
-const open = Object.values(vaults).filter((v) => v.open);
+// test-vault ships its own relative symlinks; absolute ones would break other clones
+const testVault = path.join(root, "test-vault");
+const open = Object.values(vaults).filter((v) => v.open && path.resolve(v.path) !== testVault);
 if (open.length === 0) {
 	console.error("No open vaults found.");
 	process.exit(1);

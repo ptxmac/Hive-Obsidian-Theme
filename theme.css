@@ -394,3 +394,77 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active:focus {
 	color: var(--text-sub-accent);
 	background-color: var(--background-primary);
 }
+
+/* ── Helper classes: block widths (cssclasses, Minimal-compatible) ─────────── */
+/* Only active with "Readable line length" on — otherwise notes already span the pane. */
+body {
+	/* Resolved here, so overriding --file-line-width per note below doesn't loop */
+	--hive-line-width-wide: calc(var(--file-line-width) + 300px);
+	--hive-line-width-max: 88cqw;
+	--hive-line-width-full: 100cqw;
+}
+
+/* Make the scroller a container so cqw = pane width (minus file margins) */
+.markdown-source-view.mod-cm6.is-readable-line-width:is(.wide, .max, .table-wide, .table-max, .table-100, .img-wide, .img-max, .img-100, .iframe-wide, .iframe-max, .iframe-100) .cm-scroller,
+.markdown-preview-view.is-readable-line-width:is(.wide, .max, .table-wide, .table-max, .table-100, .img-wide, .img-max, .img-100, .iframe-wide, .iframe-max, .iframe-100) {
+	container-type: inline-size;
+}
+
+/* Whole note */
+.is-readable-line-width.wide {
+	--file-line-width: var(--hive-line-width-wide);
+}
+
+.is-readable-line-width.max {
+	--file-line-width: var(--hive-line-width-max);
+}
+
+/* Per block type: pick a width, capped at the pane */
+.table-wide { --hive-table-width: min(var(--hive-line-width-wide), var(--hive-line-width-full)); }
+.table-max { --hive-table-width: var(--hive-line-width-max); }
+.table-100 { --hive-table-width: var(--hive-line-width-full); }
+.img-wide { --hive-img-width: min(var(--hive-line-width-wide), var(--hive-line-width-full)); }
+.img-max { --hive-img-width: var(--hive-line-width-max); }
+.img-100 { --hive-img-width: var(--hive-line-width-full); }
+.iframe-wide { --hive-iframe-width: min(var(--hive-line-width-wide), var(--hive-line-width-full)); }
+.iframe-max { --hive-iframe-width: var(--hive-line-width-max); }
+.iframe-100 { --hive-iframe-width: var(--hive-line-width-full); }
+
+/* Break out of the text column, centered on it (top-level blocks only, not in callouts/tables).
+   !important beats Obsidian's `margin: 0 !important` on live preview blocks. */
+/* table-*: markdown tables, Bases (embeds + code blocks), Dataview tables */
+.is-readable-line-width:is(.table-wide, .table-max, .table-100) :is(
+	.markdown-preview-sizer > :is(.el-table, .bases-embed),
+	.markdown-preview-sizer > div:has(.block-language-base, .bases-embed, :is(.block-language-dataview, .block-language-dataviewjs) table),
+	.cm-content > :is(.cm-table-widget, .bases-embed),
+	.cm-content > div:has(.block-language-base, .bases-embed, :is(.block-language-dataview, .block-language-dataviewjs) table)
+) {
+	width: auto;
+	max-width: none;
+	margin-inline: calc((100% - var(--hive-table-width)) / 2) !important;
+}
+
+/* Live preview tables keep their padding for the drag handles; let it stick out as usual */
+.markdown-source-view.mod-cm6.is-readable-line-width:is(.table-wide, .table-max, .table-100) .cm-content > .cm-table-widget {
+	margin-inline: calc((100% - var(--hive-table-width)) / 2 - var(--table-drag-handle-size)) !important;
+}
+
+.is-readable-line-width:is(.img-wide, .img-max, .img-100) :is(.markdown-preview-sizer > div > p > .image-embed, .cm-content > .cm-line > .image-embed, .cm-content > .image-embed) {
+	display: block;
+	width: auto;
+	max-width: none;
+	margin-inline: calc((100% - var(--hive-img-width)) / 2) !important;
+}
+
+.is-readable-line-width:is(.img-wide, .img-max, .img-100) .markdown-preview-sizer > div > p > img {
+	display: block;
+	max-width: var(--hive-img-width);
+	margin-inline: calc((100% - var(--hive-img-width)) / 2) !important;
+}
+
+.is-readable-line-width:is(.iframe-wide, .iframe-max, .iframe-100) :is(.markdown-preview-sizer > div > iframe, .markdown-preview-sizer > div > p > iframe, .cm-content > .cm-html-embed > iframe, .cm-content > .cm-line > iframe, .cm-content > .cm-line > .cm-html-embed > iframe) {
+	display: block;
+	width: var(--hive-iframe-width);
+	max-width: none;
+	margin-inline: calc((100% - var(--hive-iframe-width)) / 2) !important;
+}

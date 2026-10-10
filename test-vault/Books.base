@@ -1,0 +1,16 @@
+filters:
+  and:
+    - file.inFolder("Books")
+properties:
+  note.rating:
+    displayName: Rating
+views:
+  - type: table
+    name: All books
+    order:
+      - file.name
+      - author
+      - year
+      - rating
+  - type: cards
+    name: Cards
