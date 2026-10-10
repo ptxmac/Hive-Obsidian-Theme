@@ -5,6 +5,7 @@
  *        node scripts/devtools.mjs windows           # list open vault windows and their themes
  *        node scripts/devtools.mjs reload            # reload the theme in every window using it
  *        node scripts/devtools.mjs screenshot [file] # save a PNG of the window (default: screenshot.png)
+ *        node scripts/devtools.mjs screenshots       # regenerate img/hive-{dark,light}.png from test-vault
  *        node scripts/devtools.mjs eval <expr>       # evaluate JS in the window, print the result
  *        node scripts/devtools.mjs console           # stream console output until Ctrl-C
  *
@@ -214,6 +215,64 @@ const commands = {
 		cdp.close();
 	},
 
+	/** Regenerates img/hive-dark.png and img/hive-light.png from test-vault */
+	async screenshots() {
+		const windows = await openWindows();
+		const target = vault ?? "test-vault";
+		const win = windows.find((w) => w.vault === target);
+		for (const w of windows) if (w !== win) w.cdp.close();
+		if (!win) {
+			console.error(`Open ${target} in Obsidian first.`);
+			process.exit(1);
+		}
+		const { cdp } = win;
+
+		// Fixed viewport so every run produces the same framing
+		await cdp.send("Emulation.setDeviceMetricsOverride", {
+			width: 1600,
+			height: 900,
+			deviceScaleFactor: 2,
+			mobile: false,
+		});
+		const scheme = await evaluate(cdp, `app.vault.getConfig("theme")`);
+		try {
+			await evaluate(
+				cdp,
+				`(async () => {
+					const ws = app.workspace;
+					const file = (p) => app.vault.getAbstractFileByPath(p);
+					ws.rightSplit.collapse();
+					ws.leftSplit.expand();
+					const explorer = ws.getLeavesOfType("file-explorer")[0]?.view;
+					for (const item of Object.values(explorer?.fileItems ?? {})) item.setCollapsed?.(true);
+					// Keep one pane so the root split still has a tab group to open into
+					const left = ws.getLeaf(false);
+					for (const leaf of ws.getLeavesOfType("markdown")) if (leaf !== left) leaf.detach();
+					await left.openFile(file("Showcase.md"), { state: { mode: "source" } });
+					const right = ws.getLeaf("split", "vertical");
+					await right.openFile(file("Callouts.md"), { state: { mode: "preview" } });
+					ws.setActiveLeaf(left, { focus: false });
+					document.activeElement?.blur();
+					ws.trigger("resize");
+				})()`,
+			);
+			for (const [mode, file] of [
+				["obsidian", "img/hive-dark.png"],
+				["moonstone", "img/hive-light.png"],
+			]) {
+				await evaluate(cdp, `app.changeTheme(${JSON.stringify(mode)})`);
+				await sleep(500);
+				const { data } = await cdp.send("Page.captureScreenshot", { format: "png" });
+				fs.writeFileSync(new URL(`../${file}`, import.meta.url), Buffer.from(data, "base64"));
+				console.log(`Saved ${file}`);
+			}
+		} finally {
+			await evaluate(cdp, `app.changeTheme(${JSON.stringify(scheme)})`);
+			await cdp.send("Emulation.clearDeviceMetricsOverride");
+			cdp.close();
+		}
+	},
+
 	async eval() {
 		const { cdp } = await themeWindow();
 		const value = await evaluate(cdp, args.join(" "));
@@ -236,7 +295,7 @@ const commands = {
 };
 
 if (!commands[command]) {
-	console.error("Usage: node scripts/devtools.mjs [--vault <name>] <launch|windows|reload|screenshot [file]|eval <expr>|console>");
+	console.error("Usage: node scripts/devtools.mjs [--vault <name>] <launch|windows|reload|screenshot [file]|screenshots|eval <expr>|console>");
 	process.exit(1);
 }
 await commands[command]();

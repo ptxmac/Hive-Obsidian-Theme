@@ -47,8 +47,13 @@ Width helpers only apply with **Readable line length** on (`app.vault.getConfig(
 
 When adding a feature with no matching note, add an example to the vault in the same change. Obsidian already shows the note's title above the content, so don't start notes with a `# Title` that repeats the file name. Dataview isn't installed, so Dataview table rules can't be tested here.
 
+## README screenshots
+
+`npm run screenshots` regenerates `img/hive-dark.png` and `img/hive-light.png` from `test-vault`. It sets a fixed 1600×900 @2x viewport, arranges `Showcase.md` (editing view) next to `Callouts.md` (reading view), and restores the window size and color scheme afterwards. Re-run it after visible changes to the theme and view both PNGs before committing. To change what's in the screenshots, edit `Showcase.md`, which exists only for the screenshots, and keep it short enough to fit without scrolling.
+
 ## devtools.mjs notes
 
 - The port is 9223 because Chrome often holds 9222. Override it with `OBSIDIAN_DEBUG_PORT`.
 - Without `--vault`, commands target the first window whose theme is Hive. That may be one of the user's own vaults, so pass `--vault test-vault`.
+- `eval` runs every snippet in the same page, so top-level `const` and `let` names from earlier calls still exist and redeclaring them fails. Wrap multi-statement snippets in `(() => { ... })()`.
 - `eval` runs in Obsidian's window, where the global `app` is Obsidian's internal (undocumented) API. Read a function's source with `app.foo.toString()` before relying on it.

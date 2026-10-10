@@ -57,7 +57,7 @@ npm run devtools -- --vault test-vault reload      # re-read theme.css
 npm run devtools -- --vault test-vault screenshot  # save screenshot.png
 ```
 
-See `scripts/devtools.mjs` for the other commands (`windows`, `eval`, `console`).
+`npm run screenshots` regenerates the README screenshots in `img/` from the test vault. See `scripts/devtools.mjs` for the other commands (`windows`, `eval`, `console`).
 
 ## License
 

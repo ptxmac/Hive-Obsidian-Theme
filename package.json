@@ -6,6 +6,7 @@
 		"version": "node version-bump.mjs && git add manifest.json versions.json",
 		"install-theme": "node scripts/install.mjs",
 		"link-theme": "node scripts/install.mjs --link",
-		"devtools": "node scripts/devtools.mjs"
+		"devtools": "node scripts/devtools.mjs",
+		"screenshots": "node scripts/devtools.mjs screenshots"
 	}
 }
