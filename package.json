@@ -7,6 +7,11 @@
 		"install-theme": "node scripts/install.mjs",
 		"link-theme": "node scripts/install.mjs --link",
 		"devtools": "node scripts/devtools.mjs",
-		"screenshots": "node scripts/devtools.mjs screenshots"
+		"screenshots": "node scripts/devtools.mjs screenshots",
+		"lint": "stylelint theme.css"
+	},
+	"devDependencies": {
+		"stylelint": "^17.16.0",
+		"stylelint-config-obsidianmd": "^0.1.0"
 	}
 }

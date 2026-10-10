@@ -26,7 +26,8 @@ Check every CSS change in a running Obsidian, in `test-vault/`. Don't guess at O
    ```
    `changeTheme` writes to `test-vault/.obsidian/appearance.json`, which is tracked in git, so always restore `"system"`.
 6. **Check exact values with `eval`** when a screenshot can't show them, e.g. `getComputedStyle(document.querySelector(".markdown-preview-view table")).width`. Return strings or plain JSON; DOM nodes don't serialize.
-7. **After changing colors**, run `node scripts/check-contrast.mjs`. It checks the palettes against the community theme contrast rules.
+7. **Lint**: `npm run lint` runs stylelint with `stylelint-config-obsidianmd`, the rules Obsidian applies in theme review. CI fails on errors. Treat warnings (`!important`, `:has()`) as things to remove, not add.
+8. **After changing colors**, run `node scripts/check-contrast.mjs`. It checks the palettes against the community theme contrast rules.
 
 Only drive the `test-vault` window. The user's other vaults are personal; don't screenshot them or run `eval` in them unless asked.
 
