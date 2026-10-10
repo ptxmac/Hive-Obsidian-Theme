@@ -14,13 +14,11 @@ Light cream backgrounds with amber accents.
 
 ## Install and Use
 
-**Settings → Appearance → Themes → Manage** → search **Hive** → **Install** → select **Hive** as your theme.
+Hive isn't in Obsidian's community theme directory, so install it by hand:
 
-## Fonts
-
-Hive uses Obsidian's default fonts: the normal text font for notes (in both the editing and reading views) and the monospace font only for code.
-
-To change them, go to **Settings → Appearance → Font**: pick a **Text font**, a **Monospace font**, or change the **Font size**.
+1. Download `theme.css` and `manifest.json` from the [latest release](https://github.com/ptxmac/Hive-Obsidian-Theme/releases/latest).
+2. Put both files in `<your vault>/.obsidian/themes/Hive/`.
+3. Go to **Settings → Appearance → Themes** and select **Hive**.
 
 ## Helper classes
 
