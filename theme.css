@@ -71,6 +71,10 @@ body {
 	--interactive-accent-rgb: 248, 197, 55;
 	--interactive-before: #9a9284;
 
+	/* Plain buttons and dropdowns; on macOS Obsidian otherwise uses the amber border color */
+	--interactive-normal: var(--color-base-30);
+	--interactive-hover: var(--color-base-35);
+
 	/* Graph view */
 	--graph-node: rgb(var(--interactive-accent-rgb));
 	--graph-line: rgb(var(--interactive-accent-rgb));
@@ -150,6 +154,10 @@ body {
 	--interactive-accent: #D4922A;
 	--interactive-accent-rgb: 212, 146, 42;
 	--interactive-before: #6b5e4f;
+
+	/* Plain buttons and dropdowns; on macOS Obsidian otherwise uses the amber border color */
+	--interactive-normal: var(--color-base-20);
+	--interactive-hover: var(--color-base-25);
 
 	--graph-node: rgb(var(--interactive-accent-rgb));
 	--graph-line: rgb(var(--interactive-accent-rgb));
