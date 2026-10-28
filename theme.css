@@ -37,15 +37,17 @@ body {
 	--background-primary-alt: var(--color-base-10);
 	--background-secondary: var(--color-base-00);
 	--background-secondary-alt: var(--color-base-30);
-	--background-modifier-border: #f8c537;
+
+	/* Accent follows Settings → Appearance accent picker (--accent-h/s/l) */
+	--background-modifier-border: var(--interactive-accent);
 	--background-modifier-hover: rgb(255 255 255 / 6%);
 
 	--text-normal: #faf2d6;
 	--text-faint: #bdae93;
 	--text-muted: #bdae93;
-	--h1-color: #f8c537;
-	--h2-color: #E8D49A;
-	--h3-color: #D49335;
+	--h1-color: var(--text-accent);
+	--h2-color: color-mix(in oklch, var(--text-accent) 55%, var(--text-normal));
+	--h3-color: var(--text-accent-hover);
 	--h4-color: #E0E0E0;
 	--h5-color: #C9BEA8;
 	--h6-color: #bdae93;
@@ -57,46 +59,41 @@ body {
 	--text-title-h6: var(--h6-color);
 	--text-highlight-bg: #640211;
 	--text-link: #83a598;
-	--text-a: #f8c537;
+	--text-a: var(--text-accent);
 	--text-a-hover: #83a598;
-	--text-accent: #f8c537;
-	--text-accent-hover: #D49335;
-	--text-on-accent: #1A2023;
-	--text-selection: #f8c537;
+	--text-selection: color-mix(in oklch, var(--interactive-accent) 40%, transparent);
 
 	--inline-code: #83a598;
 	--code-block: #83a598;
 	--pre-code: #3D3D3D;
-	--interactive-accent: #f8c537;
-	--interactive-accent-rgb: 248, 197, 55;
 	--interactive-before: #9a9284;
 
-	/* Plain buttons and dropdowns; on macOS Obsidian otherwise uses the amber border color */
+	/* Plain buttons and dropdowns; on macOS Obsidian otherwise uses the accent border color */
 	--interactive-normal: var(--color-base-30);
 	--interactive-hover: var(--color-base-35);
 
 	/* Graph view */
-	--graph-node: rgb(var(--interactive-accent-rgb));
-	--graph-line: rgb(var(--interactive-accent-rgb));
-	--graph-node-focused: rgb(var(--interactive-accent-rgb));
+	--graph-node: var(--interactive-accent);
+	--graph-line: var(--interactive-accent);
+	--graph-node-focused: var(--interactive-accent);
 	--graph-text: var(--text-normal);
 
 	--callout-title-color: var(--text-normal);
 
-	/* File tree — hover subtle; active = darker amber + white text (not bright gold) */
-	--hive-nav-active-background: #7A5C14;
+	/* File tree — hover subtle; active = darker accent shade */
+	--hive-nav-active-background: var(--color-accent-1);
 	--nav-item-background-hover: var(--background-modifier-hover);
 	--nav-item-background-active: var(--hive-nav-active-background);
 	--nav-item-color-hover: var(--text-normal);
-	--nav-item-color-active: #fff;
+	--nav-item-color-active: var(--text-on-accent);
 	--nav-collapse-icon-color: var(--text-faint);
 	--nav-collapse-icon-color-collapsed: var(--text-faint);
 
 	/* Hive-specific UI (settings buttons, etc.) */
-	--button-bg-color: #D49335;
-	--button-text-color: #242424;
-	--button-hover-bg-color: #DAA520;
-	--button-hover-text-color: #1A2023;
+	--button-bg-color: var(--interactive-accent);
+	--button-text-color: var(--text-on-accent);
+	--button-hover-bg-color: var(--interactive-accent-hover);
+	--button-hover-text-color: var(--text-on-accent);
 
 	--text-sub-accent: var(--text-accent);
 }
@@ -121,47 +118,44 @@ body {
 	--background-primary-alt: var(--color-base-05);
 	--background-secondary: var(--color-base-20);
 	--background-secondary-alt: var(--color-base-30);
-	--background-modifier-border: #C87628;
+
+	/* Accent follows Settings → Appearance accent picker (--accent-h/s/l) */
+	--background-modifier-border: var(--interactive-accent);
 	--background-modifier-hover: rgb(120 72 24 / 8%);
 
 	--text-normal: #2C2419;
 	--text-faint: #6B5E4F;
 	--text-muted: #5C5044;
-	--h1-color: #9A4E12;
-	--h2-color: #924e14;
-	--h3-color: #8f5514;
-	--h4-color: #8F4F14;
-	--h5-color: #7A4310;
-	--h6-color: #6B3A0E;
+	--h1-color: var(--text-accent);
+	--h2-color: color-mix(in oklch, var(--text-accent) 90%, var(--text-normal));
+	--h3-color: color-mix(in oklch, var(--text-accent) 85%, var(--text-normal));
+	--h4-color: color-mix(in oklch, var(--text-accent) 80%, var(--text-normal));
+	--h5-color: color-mix(in oklch, var(--text-accent) 70%, var(--text-muted));
+	--h6-color: color-mix(in oklch, var(--text-accent) 60%, var(--text-muted));
 	--text-title-h1: var(--h1-color);
 	--text-title-h2: var(--h2-color);
 	--text-title-h3: var(--h3-color);
 	--text-title-h4: var(--h4-color);
 	--text-title-h5: var(--h5-color);
 	--text-title-h6: var(--h6-color);
-	--text-link: #9b4218;
-	--text-a: #9B3A1A;
-	--text-a-hover: #9b4218;
-	--text-accent: #9B3A1A;
-	--text-accent-hover: #9b4218;
-	--text-on-accent: #1F1A14;
-	--text-selection: #E4C07A;
+	--text-link: var(--text-accent);
+	--text-a: var(--text-accent);
+	--text-a-hover: var(--text-accent-hover);
+	--text-selection: color-mix(in oklch, var(--interactive-accent) 35%, transparent);
 	--text-highlight-bg: #F0E0B8;
 	--text-white: #FFFCF7;
 
 	--inline-code: #3D6B5C;
 	--pre-code: #EDE6DA;
-	--interactive-accent: #D4922A;
-	--interactive-accent-rgb: 212, 146, 42;
 	--interactive-before: #6b5e4f;
 
-	/* Plain buttons and dropdowns; on macOS Obsidian otherwise uses the amber border color */
+	/* Plain buttons and dropdowns; on macOS Obsidian otherwise uses the accent border color */
 	--interactive-normal: var(--color-base-20);
 	--interactive-hover: var(--color-base-25);
 
-	--graph-node: rgb(var(--interactive-accent-rgb));
-	--graph-line: rgb(var(--interactive-accent-rgb));
-	--graph-node-focused: rgb(var(--interactive-accent-rgb));
+	--graph-node: var(--interactive-accent);
+	--graph-line: var(--interactive-accent);
+	--graph-node-focused: var(--interactive-accent);
 	--graph-text: var(--text-normal);
 
 	--callout-title-color: var(--text-normal);
@@ -181,22 +175,22 @@ body {
 	--tab-text-color-focused-highlighted: #1F1A14;
 	--tab-text-color-focused-active-current: #1F1A14;
 	--tab-divider-color: #C9B8A8;
-	--tab-outline-color: #C87628;
+	--tab-outline-color: var(--interactive-accent);
 	--tab-font-weight: 500;
 	--tab-font-weight-active: 600;
 
 	--list-marker-color: var(--text-muted);
 	--indentation-guide-color: #6b5e4f;
 
-	--button-bg-color: #C87628;
-	--button-text-color: #1F1A14;
-	--button-hover-bg-color: #A85C18;
-	--button-hover-text-color: #FFFCF7;
+	--button-bg-color: var(--interactive-accent);
+	--button-text-color: var(--text-on-accent);
+	--button-hover-bg-color: var(--interactive-accent-hover);
+	--button-hover-text-color: var(--text-on-accent);
 
 	--text-sub-accent: var(--text-accent);
 }
 
-/* Dark: active file row — ensure white label/icons on darker amber bar */
+/* Dark: active file row — label/icons follow --nav-item-color-active (on-accent) */
 .theme-dark .tree-item-self.nav-file-title.is-active,
 .theme-dark .tree-item-self.nav-folder-title.is-active {
 	--icon-color: var(--nav-item-color-active);
@@ -222,7 +216,7 @@ body {
 
 /* ── Selection (both color schemes) ─────────────────────────────────────── */
 
-/* :is() keeps one rule per target, ordered by specificity, instead of a dark and a light copy */
+/* Translucent accent selection — keep body text color (readable on any accent) */
 :is(.theme-dark, .theme-light) ::selection,
 :is(.theme-dark, .theme-light) :is(
 	.markdown-preview-view,
@@ -231,7 +225,6 @@ body {
 	.cm-editor .cm-line
 ) ::selection {
 	background-color: var(--text-selection);
-	color: var(--text-on-accent);
 }
 
 :is(.theme-dark, .theme-light) :is(.markdown-source-view.mod-cm6 .cm-editor, .cm-editor) :is(
@@ -239,10 +232,6 @@ body {
 	.cm-selectionMatchBackground
 ) {
 	background-color: var(--text-selection);
-}
-
-:is(.theme-dark, .theme-light) .cm-editor .cm-selection {
-	color: var(--text-on-accent);
 }
 
 /* ── Light: tabs, editor syntax ─────────────────────────────────────────── */
@@ -288,7 +277,7 @@ body {
 .theme-light .graph-view.color-circle,
 .theme-light .graph-view.color-fill-highlight,
 .theme-light .graph-view.color-line-highlight {
-	color: rgb(var(--interactive-accent-rgb));
+	color: var(--interactive-accent);
 }
 
 /* ── Misc editor / UI ───────────────────────────────────────────────────── */
