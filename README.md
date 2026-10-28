@@ -1,16 +1,16 @@
 # Hive
 
-A dark/light Obsidian theme with yellow and amber accents.
+A dark/light Obsidian theme that follows your **Settings → Appearance** accent color.
 
-Hive is a fork of [Wasp](https://github.com/santiyounger/Wasp-Obsidian-Theme) by [Santi Younger](https://santiyounger.com/).
+Hive is a fork of [Wasp](https://github.com/santiyounger/Wasp-Obsidian-Theme) by [Santi Younger](https://santiyounger.com/). For the classic Hive look, pick a yellow or amber accent.
 
 ## Dark mode
 ![Hive dark mode](img/hive-dark.png)
-Dark backgrounds with yellow accents.
+Dark backgrounds with accent-colored highlights.
 
 ## Light mode
 ![Hive light mode](img/hive-light.png)
-Light cream backgrounds with amber accents.
+Light cream backgrounds with accent-colored highlights.
 
 ## Install and Use
 
@@ -19,6 +19,7 @@ Hive isn't in Obsidian's community theme directory, so install it by hand:
 1. Download `theme.css` and `manifest.json` from the [latest release](https://github.com/ptxmac/Hive-Obsidian-Theme/releases/latest).
 2. Put both files in `<your vault>/.obsidian/themes/Hive/`.
 3. Go to **Settings → Appearance → Themes** and select **Hive**.
+4. Set **Accent color** under Appearance to taste (yellow/amber matches the screenshots).
 
 ## Helper classes
 
