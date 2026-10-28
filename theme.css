@@ -37,6 +37,7 @@ body {
 	--background-primary-alt: var(--color-base-10);
 	--background-secondary: var(--color-base-00);
 	--background-secondary-alt: var(--color-base-30);
+
 	/* Accent follows Settings → Appearance accent picker (--accent-h/s/l) */
 	--background-modifier-border: var(--interactive-accent);
 	--background-modifier-hover: rgb(255 255 255 / 6%);
@@ -117,6 +118,7 @@ body {
 	--background-primary-alt: var(--color-base-05);
 	--background-secondary: var(--color-base-20);
 	--background-secondary-alt: var(--color-base-30);
+
 	/* Accent follows Settings → Appearance accent picker (--accent-h/s/l) */
 	--background-modifier-border: var(--interactive-accent);
 	--background-modifier-hover: rgb(120 72 24 / 8%);
