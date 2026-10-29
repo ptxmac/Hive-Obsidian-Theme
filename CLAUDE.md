@@ -50,7 +50,7 @@ When adding a feature with no matching note, add an example to the vault in the 
 
 ## README screenshots
 
-`npm run screenshots` regenerates `img/hive-dark.png` and `img/hive-light.png` from `test-vault`. It sets a fixed 1600×900 @2x viewport, arranges `Showcase.md` (editing view) next to `Callouts.md` (reading view), and restores the window size and color scheme afterwards. Re-run it after visible changes to the theme and view both PNGs before committing. To change what's in the screenshots, edit `Showcase.md`, which exists only for the screenshots, and keep it short enough to fit without scrolling.
+`npm run screenshots` regenerates `img/hive-dark.png` and `img/hive-light.png` from `test-vault`. It sets a fixed 1600×900 @2x viewport, arranges `Showcase.md` (editing view) next to `Callouts.md` (reading view), and restores the window size, color scheme and accent afterwards. Dark mode uses the vault's accent (`#f8c537`). Light mode switches to `#9a6700`, which gives 4.5:1 contrast on the cream background, without changing the vault setting. Re-run it after visible changes to the theme and view both PNGs before committing. To change what's in the screenshots, edit `Showcase.md`, which exists only for the screenshots, and keep it short enough to fit without scrolling.
 
 ## devtools.mjs notes
 

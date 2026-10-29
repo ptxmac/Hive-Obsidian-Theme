@@ -256,11 +256,14 @@ const commands = {
 					ws.trigger("resize");
 				})()`,
 			);
-			for (const [mode, file] of [
+			// Light mode uses a darker amber so accent text keeps 4.5:1 on the cream background.
+			// setAccentColor only changes the window; the vault's accentColor setting is untouched.
+			for (const [mode, file, accent] of [
 				["obsidian", "img/hive-dark.png"],
-				["moonstone", "img/hive-light.png"],
+				["moonstone", "img/hive-light.png", "#9a6700"],
 			]) {
 				await evaluate(cdp, `app.changeTheme(${JSON.stringify(mode)})`);
+				await evaluate(cdp, accent ? `app.setAccentColor(${JSON.stringify(accent)})` : `app.updateAccentColor()`);
 				await sleep(500);
 				const { data } = await cdp.send("Page.captureScreenshot", { format: "png" });
 				fs.writeFileSync(new URL(`../${file}`, import.meta.url), Buffer.from(data, "base64"));
@@ -268,6 +271,7 @@ const commands = {
 			}
 		} finally {
 			await evaluate(cdp, `app.changeTheme(${JSON.stringify(scheme)})`);
+			await evaluate(cdp, `app.updateAccentColor()`);
 			await cdp.send("Emulation.clearDeviceMetricsOverride");
 			cdp.close();
 		}
