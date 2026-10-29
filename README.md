@@ -14,12 +14,13 @@ Light cream backgrounds with accent-colored highlights.
 
 ## Install and Use
 
-Hive isn't in Obsidian's community theme directory, so install it by hand:
+Hive is in Obsidian's [community theme directory](https://community.obsidian.md/themes/hive):
 
-1. Download `theme.css` and `manifest.json` from the [latest release](https://github.com/ptxmac/Hive-Obsidian-Theme/releases/latest).
-2. Put both files in `<your vault>/.obsidian/themes/Hive/`.
-3. Go to **Settings → Appearance → Themes** and select **Hive**.
-4. Set **Accent color** under Appearance to taste. The screenshots use `#f8c537` in dark mode and the darker `#9a6700` in light mode, which keeps accent text readable on the light background.
+1. Go to **Settings → Appearance → Themes** and select **Manage**.
+2. Search for **Hive**, then select **Install and use**.
+3. Set **Accent color** under Appearance to taste. The screenshots use `#f8c537` in dark mode and the darker `#9a6700` in light mode, which keeps accent text readable on the light background.
+
+To install by hand instead, download `theme.css` and `manifest.json` from the [latest release](https://github.com/ptxmac/Hive-Obsidian-Theme/releases/latest) and put both files in `<your vault>/.obsidian/themes/Hive/`.
 
 ## Helper classes
 
